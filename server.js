@@ -2,8 +2,9 @@ const express = require('express');
 const { Client } = require('pg');
 
 const app = express();
-
 const port = process.env.PORT || 3000;
+
+app.set('view engine', 'ejs');
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -14,7 +15,14 @@ client.connect()
     .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-    res.send('Coolify App läuft!');
+
+    const bilder = [
+        { name: 'Ferien.jpg' },
+        { name: 'Auto.png' },
+        { name: 'Hund.jpeg' }
+    ];
+
+    res.render('index', { bilder });
 });
 
 app.get('/health', (req, res) => {

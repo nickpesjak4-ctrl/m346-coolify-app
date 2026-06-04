@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bilderverwaltung</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        .bild {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>📷 Bilderverwaltung</h1>
+
+<p>M346 Coolify Projekt</p>
+
+<h2>Gespeicherte Bilder</h2>
+
+<% bilder.forEach(function(bild){ %>
+
+<div class="bild">
+    <strong><%= bild.name %></strong>
+</div>
+
+<% }) %>
+
+</body>
+</html>
