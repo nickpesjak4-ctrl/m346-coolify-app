@@ -185,6 +185,40 @@ app.get('/fahrzeug/:id', async (req, res) => {
 
         const f = fahrzeug.rows[0];
 
+let wartung = '';
+
+if (f.marke === 'Aprilia') {
+    wartung = `
+    <p>🛢️ Nächster Ölwechsel bei ca. 28'000 km</p>
+    <p>⛓️ Kette und Ritzel kontrollieren</p>
+    <p>🛞 Reifenprofil prüfen</p>
+    `;
+}
+
+else if (f.marke === 'Ford') {
+    wartung = `
+    <p>🛢️ Nächster Service bei ca. 200'000 km</p>
+    <p>🛞 Reifenzustand prüfen</p>
+    <p>🔧 Allgemeine Kontrolle empfohlen</p>
+    `;
+}
+
+else if (f.marke === 'Peugeot') {
+    wartung = `
+    <p>🔋 Batterie kontrollieren</p>
+    <p>🛵 Varioriemen prüfen</p>
+    <p>🛞 Reifenzustand prüfen</p>
+    `;
+}
+
+else if (f.marke === 'Segway') {
+    wartung = `
+    <p>🔋 Akku-Zustand prüfen</p>
+    <p>🛴 Bremsen kontrollieren</p>
+    <p>🛞 Reifendruck prüfen</p>
+    `;
+}
+
         let html = `
 <!DOCTYPE html>
 <html lang="de">
@@ -286,9 +320,7 @@ ${s.beschreibung}
 
 <h2>📋 Nächste Wartung</h2>
 
-<p>Ölwechsel: Kontrolle empfohlen</p>
-<p>Bremsen: Kontrolle empfohlen</p>
-<p>Reifen: Zustand prüfen</p>
+${wartung}
 
 <a class="back" href="/">
 ← Zurück zur Übersicht
