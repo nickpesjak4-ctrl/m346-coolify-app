@@ -18,6 +18,14 @@ app.get('/', async (req, res) => {
         const result = await client.query(
             'SELECT * FROM fahrzeuge ORDER BY marke'
         );
+		
+		const fahrzeugCount = await client.query(
+    'SELECT COUNT(*) FROM fahrzeuge'
+);
+
+const serviceCount = await client.query(
+    'SELECT COUNT(*) FROM service'
+);
 
         let html = `
 <!DOCTYPE html>
@@ -54,6 +62,12 @@ body{
 
 .header p{
     color:#94a3b8;
+}
+
+.stats{
+    margin-top:20px;
+    font-size:1.1rem;
+    font-weight:bold;
 }
 
 .container{
@@ -112,7 +126,17 @@ body{
 
 <div class="header">
 <h1>🚗 Fahrzeugverwaltung</h1>
+
 <p>Meine Fahrzeuge und Servicehistorie</p>
+
+<br>
+
+<div class="stats">
+🚗 Fahrzeuge: ${fahrzeugCount.rows[0].count}
+&nbsp;&nbsp;&nbsp;
+🔧 Serviceeinträge: ${serviceCount.rows[0].count}
+</div>
+
 </div>
 
 <div class="container">
