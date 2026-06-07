@@ -1,3 +1,37 @@
+let html = `
+<html>
+<head>
+<title>Fahrzeugverwaltung</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.button{
+    background:#007bff;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<h1>🚗 Fahrzeugverwaltung</h1>
+`;
+
 const express = require('express');
 const { Client } = require('pg');
 
@@ -27,7 +61,9 @@ app.get('/', async (req, res) => {
             html += `
                 <div style="margin-bottom:20px;">
                     <h2>${f.marke} ${f.modell}</h2>
-                    <p>Baujahr: ${f.baujahr}</p>
+                    <p>Baujahr: ${
+						new Date(f.baujahr).toLocaleDateString('de-CH')
+					}</p>
                     <p>Kilometer: ${f.kilometer} km</p>
                     <a href="/fahrzeug/${f.id}">Details anzeigen</a>
                 </div>
