@@ -12,7 +12,69 @@ client.connect()
     .then(() => console.log('Database connected'))
     .catch(err => console.log(err));
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+
+    res.send(`
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ Karolina ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:#0f172a;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+    text-align:center;
+}
+
+h1{
+    font-size:6rem;
+    color:#ff4d6d;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:2rem;
+}
+
+.heart{
+    font-size:8rem;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="heart">❤️</div>
+
+<h1>Karolina</h1>
+
+<p>Ich mobbe dich auch nicht immer 🥰</p>
+
+</body>
+</html>
+`);
+});
+
     try {
 
         const result = await client.query(
@@ -221,7 +283,7 @@ if (f.marke === 'Aprilia') {
 
 else if (f.marke === 'Ford') {
     wartung = `
-    <p>🛢️ Nächster Tigi bei ca. 200'000 km</p>
+    <p>🛢️ Nächster Ölwechsel bei ca. 200'000 km</p>
     <p>🛞 Reifenzustand prüfen</p>
     <p>🔧 Allgemeine Kontrolle empfohlen</p>
     `;
