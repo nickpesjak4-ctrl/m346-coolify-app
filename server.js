@@ -221,7 +221,7 @@ if (f.marke === 'Aprilia') {
 
 else if (f.marke === 'Ford') {
     wartung = `
-    <p>🛢️ Nächster Service bei ca. 200'000 km</p>
+    <p>🛢️ Nächster Tigi bei ca. 200'000 km</p>
     <p>🛞 Reifenzustand prüfen</p>
     <p>🔧 Allgemeine Kontrolle empfohlen</p>
     `;
